@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>React for Beginners</title>
+    <meta charset="UTF-8">
+    <meta name='description' content='React'>
+    <meta name='keywords' content='React, learning, new, Nick'>
+  </head>
+
+  <body>
+    <div id='root'></div>
+    <!-- Adding React -->
+    <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+
+    <!-- REMOVED type='text/javascript' <script type='text/javascript'> -->
+      <script type='text/babel'>
+      const rootElement = document.getElementById('root');
+      {/* XXX ALL USUSABLE COMPANANTS */ }
+      const message = (props) => <div>{props.msg}</div>
+      //True use of JSX I believe. Make sure it is Cap
+    {/*
+      You can use const Message = (props) => <div>{props.children}</div> to add children to your props */ }
+      const Message = (props) => <div>{props.msg}</div>
+      const MessageChildren = (props) => <div>{props.children}</div>
+
+
+      {/*With children. This helps us make it look more html like*/
+      /* With Children
+      const Message = (props) => <div>{props.children}</div>
+      <Message children = "Hello World"/>
+      <Message children = "Goodbye World"/> */}
+      const element = (
+        <div className="container">
+          {message({msg: 'Hello World'})}
+          {message({msg: 'Goodbye World'})}
+
+          {/*
+          Below we are passing in the message message function passing the props
+          {React.createElement(message, {msg: 'Hello World'})}
+          {React.createElement(message, {msg: 'Goodbye World'})}
+          JSX way method
+          */ }
+
+          <Message msg = "World Hello"/>
+          <Message msg = "World Goodbye"/>
+
+          {/*Instead of doing it this method you can make it look more like html with the children props*/}
+          <MessageChildren>
+            I want to eat
+            <MessageChildren>Right now</MessageChildren>
+          </MessageChildren>
+        </div>
+      )
+      ReactDOM.render(element,rootElement);
+    </script>
+
+  </body>
+</html>
