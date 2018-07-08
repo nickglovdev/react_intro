@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>React for Beginners</title>
-  <meta charset="UTF-8">
-  <meta name='description' content='React'>
-  <meta name='keywords' content='React, learning, new, Nick'>
-</head>
+  <head>
+    <title>React for Beginners</title>
+    <meta charset="UTF-8">
+    <meta name='description' content='React'>
+    <meta name='keywords' content='React, learning, new, Nick'>
+  </head>
 
-<body>
-  <div id='root'></div>
-  <!-- Adding React -->
-  <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.production.min.js"></script>
+  <body>
+    <div id='root'></div>
+    <!-- Adding React -->
+    <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <!-- REMOVED type='text/javascript' <script type='text/javascript'> -->
+      <script type='text/babel'>
+      const rootElement = document.getElementById('root');
 
-  <script type='text/javascript'>
-    const rootElement = document.getElementById('root');
+      //// XXX NORMAL METHOD
+      // const element = document.createElement('div');
+      // element.textContent = 'Hello World';
+      // element.className = 'container';
+      // rootElement.appendChild(element);
 
-    // const element = document.createElement('div');
-    // element.textContent = 'Hello World';
-    // element.className = 'container';
-    // rootElement.appendChild(element);
+      //XXX REACT CODE
+     //  const element = React.createElement(
+     //   'div', {
+     //     className: 'container',
+     //     children: 'Hello World'
+     // });
+     //ReactDOM.render(element,rootElement);
 
-    // React Code
-    const element = React.createElement(
-     'div', {
-       className: 'container',
-       children: 'Hello World'
-   });
-     console.log(element);
-     ReactDOM.render(element,rootElement);
-  </script>
+     // XXX JSX
+       const content = 'Hello World'; // Inside {} you can do JS
+       const className = 'container';
+        //Using JSX object prop is common
+       const props = {
+         className: 'container',
+         children: 'Hello World',
+       }
+       // Non props element
+       //const element = <div className = {className + '_hi_there'}>{(() => content)()}</div> // Use double quotes for class
+        /
+       const element = <div {...props}/>
+       /*XXX If you would like to overide part of the props object you can use this syntax.
+       const element = <div {...props} className="my-class"/>
+       const element = <div {...props} children = "Not world"/>
+       const element = <div {...props}Not world</div>
+       const element = <div {...props}/>*/
+       console.log(element);
+       ReactDOM.render(element,rootElement);
+    </script>
 
-</body>
-
+  </body>
 </html>
