@@ -1,0 +1,172 @@
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel">
+{/* XXX 1. OG react
+function Message({message}) {
+  if (!message) {
+    return <div>No Message</div>
+  }
+  return <div>{message}</div>
+}
+ReactDOM.render(
+  <Message message={null} />,
+  document.getElementById('root'),
+)
+
+ XXX 2.  JSX Version rember it is an abtraction of React.create
+  elements rules
+*/}
+{/*
+function Message({message}) {
+  if (!message) {
+    return React.createElement(
+      'div',
+      null,
+      'No Message',
+    )
+  }
+  {/* XXX the null is for the props*
+  return React.createElement('div', null, message,)
+}
+ReactDOM.render(
+  <Message message={null} />,
+  document.getElementById('root'),
+) */}
+{/* XXX 3. Ternary operator
+function Message({message}) {
+  return message ?
+    React.createElement(
+      'div',
+      null,
+      message,
+      )
+      :
+      React.createElement(
+        'div',
+        null,
+        'No Message',
+    )
+}
+ReactDOM.render(
+  <Message message={'I am Null'} />,
+  document.getElementById('root'),
+) */}
+{/* XXX 4. wrap it in another div Ternary React */}
+function Message({message}) {
+  return (
+      <div>
+      {message
+         ? React.createElement(
+          'div',
+          null,
+          message,
+          )
+          :
+          React.createElement(
+            'div',
+            null,
+            'No Message',
+        )}
+    </div>
+  )
+}
+ReactDOM.render(
+  <Message message={'I am Null'} />,
+  document.getElementById('root'),
+)
+{/* XXX 4. wrap it in another div Ternary React */}
+function Message({message}) {
+  return (
+      <div>
+      {message
+         ? React.createElement(
+          'div',
+          null,
+          message,
+          )
+          :
+          React.createElement(
+            'div',
+            null,
+            'No Message',
+        )}
+    </div>
+  )
+}
+ReactDOM.render(
+  <Message message={'I am Null'} />,
+  document.getElementById('root'),
+)
+
+{/* XXX 4. wrap it in another div Ternary React */}
+function Message({message}) {
+  return (
+      <div>
+      {message
+         ? React.createElement(
+          'div',
+          null,
+          message,
+          )
+          :
+          React.createElement(
+            'div',
+            null,
+            'No Message',
+        )}
+    </div>
+  )
+}
+ReactDOM.render(
+  <Message message={'I am Null'} />,
+  document.getElementById('root'),
+)
+
+{/* XXX 4. wrap it in another div Ternary React
+function Message({message}) {
+  return (
+      <div>
+      {message
+         ? React.createElement(
+          'div',
+          null,
+          message,
+          )
+          :
+          React.createElement(
+            'div',
+            null,
+            'No Message',
+        )}
+    </div>
+  )
+}
+ReactDOM.render(
+  <Message message={'I am Null'} />,
+  document.getElementById('root'),
+)
+*/}
+
+{/* XXX 5. wrap it in another div Ternary JSX*/}
+function Message({message}) {
+  return (
+    <div>
+      {message ? (
+        <div>{message}</div>
+      ) : (
+        <div>No Message</div>
+    )}
+    </div>
+  )
+}
+ReactDOM.render(
+  <Message message={null} />,
+  document.getElementById('root'),
+)
+
+
+</script>
+</body>
