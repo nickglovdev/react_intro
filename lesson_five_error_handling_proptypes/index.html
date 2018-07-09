@@ -1,0 +1,75 @@
+<div id="root"></div>
+
+<!-- <script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+5. Switching to production. You will only see your errors in development
+ -->
+
+<script src="https://unpkg.com/react@16.3.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.production.min.js"></script>
+<!-- React package for Proptypes. Use this instead of making your own function -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.2/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<script type="text/babel">
+{/* 4. In case of classes we add the PropType to the static property */}
+class SayHello extends React.Component {
+  static propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }
+  render() {
+    const {firstName, lastName} = this.props
+    return (
+      <div>
+          Hello {firstName} {lastName}!
+      </div>
+    )
+  }
+}
+ReactDOM.render(
+  <SayHello firstName={true} />,
+  document.getElementById('root')
+)
+
+{/* 'original code'
+	function SayHello(props) {
+		return (
+
+        {/* 2. This is helpful when
+          'we need to add a default value like here "last name would
+           be unkown"''
+      <div>
+				Hello {props.firstName}
+        {props.lastName || 'Unkown' }!
+			</div>
+		)
+	}
+
+    XXX The PropTypes that I built for this lesson
+
+  const PropTypes = {
+    string(props, propName, componentName) {
+  			if(typeof props[propName] !== 'string') {
+  				return new Error (
+  					`Hey, you should pass a string for ${propName}
+            in ${componentName} but you passed a ${typeof props[propName]}!`
+  				)
+  			}
+  		},
+    }
+    */}
+  {/* 1. props optional by default so if it is not
+    provided then it doesn't run.
+    3. To make a prop required add to PropTypes.string "isRequired"
+
+	SayHello.propTypes = {
+	  firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+	}
+
+	ReactDOM.render(
+		<SayHello firstName={true} />,
+		document.getElementById('root')
+	) */}
+</script>
