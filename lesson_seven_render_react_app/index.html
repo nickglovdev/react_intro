@@ -1,0 +1,42 @@
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel">
+const rootElement = document.getElementById('root')
+{/* XXX 1. Updates only the specific element
+function tick() {
+  const time = new Date().toLocaleTimeString()
+  const element = (<div>It is {time} </div>)
+  ReactDOM.render(element, rootElement)
+}
+tick()
+setInterval(tick, 1000) */}
+{/* XXX 2. JSX Updates only the specific element
+function tick() {
+  const time = new Date().toLocaleTimeString()
+  const element =
+    <div>
+        It is
+        <input value={time}/>
+        <input value={time}/>
+    </div>
+  ReactDOM.render(element, rootElement)
+*/}
+{/* XXX 3. Template String. Updates the entire dom structure */ }
+function tick() {
+  const time = new Date().toLocaleTimeString()
+  const element =
+    `
+      <div>
+          It is
+          <input value="${time}"/>
+          <input value="${time}"/>
+      </div>
+    `
+    rootElement.innerHTML = element
+}
+
+tick()
+setInterval(tick, 1000)
+</script>
