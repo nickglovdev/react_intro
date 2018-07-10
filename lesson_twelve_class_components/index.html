@@ -1,0 +1,40 @@
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel">
+class Counter extends React.Component {
+
+  /* Origin had constructor, but to make it
+    simplier then declaring many this we removed it
+    constructor(...args) {
+        super(...args)
+        this.state = {count: 0}
+        this.handleClick = this.handleClick.bind(this)
+    } */
+   /* Removed 'this' and made state and handeClick public */
+   state = {count: 0}
+   /* Clear it up more by just using the function
+    handleClick = this.handleClick.bind(this)  */
+   handleClick = () => {
+        this.setState(({count}) => ({
+            count: count +1 ,
+        }))
+        /* but we don't need bind */
+    }/*.bind(this)*/
+    render() {
+      { /* this had to be binded. Look more into this */ }
+        return (
+            <button onClick={this.handleClick}>
+                {this.state.count}
+            </button>
+        )
+    }
+}
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('root'),
+)
+</script>
+</body>
