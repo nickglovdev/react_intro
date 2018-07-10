@@ -1,0 +1,148 @@
+<body>
+<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6.0/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<div id="root"></div>
+
+<style>
+  .box {
+    border: 1px solid #333;
+  }
+  .box--large {
+    width: 180px;
+    height: 180px;
+  }
+  .box--medium {
+    width: 120px;
+    height: 120px;
+  }
+  .box--small {
+    width: 60px;
+    height: 60px;
+  }
+</style>
+
+<script type="text/babel">
+{/* XXX 1.  const element = (
+  <div>
+    <div
+    className="box box--small"
+    style={{paddingLeft: 20}}
+    >
+    Box
+    </div>
+  </div>
+)
+*/}
+
+{/* XXX 2. JSX*
+const className = 'box box--small'
+const props = {
+    className,
+    style: {paddingLeft: 20},
+}
+const element = (
+  <div>
+    <div {...props}>box</div>
+  </div>
+)*/}
+
+{/* XXX 3. Function component problem is we lose padding
+function Box(props){
+    return (
+        <div
+            className="box box--small"
+            style={{paddingLeft: 20}}
+            {...props}
+        />
+    )
+}
+const element = (
+    <div>
+        <Box style={{backgroundColor: 'lightblue'}}>
+        small box
+        </Box>
+    </div>
+)
+*/}
+{/* XXX 4. Fixing the problem of overiding padding
+function Box({style, ...rest}){
+    return (
+        <div
+            className="box box--small"
+            style={{paddingLeft: 20, ...style}}
+            {...rest}
+        />
+    )
+}
+const element = (
+    <div>
+        <Box style={{backgroundColor: 'lightblue'}}>
+        small box
+        </Box>
+    </div>
+)
+*/}
+
+{/* XXX 5. Doing the same with class name
+function Box({style, className='', ...rest}){
+    return (
+        <div
+            className={`box ${className}`}
+            style={{paddingLeft: 20, ...style}}
+            {...rest}
+        />
+    )
+}
+const element = (
+    <div>
+        <Box
+        className="box--small"
+        style={{backgroundColor: 'lightblue'}}>
+        small box
+        </Box>
+    </div>
+)
+*/}
+{/* XXX 6. Multiple boxes*/}
+function Box({style, size, className='', ...rest}){
+    const sizeClassName = size ? `box--${size}` : ''
+    return (
+        <div
+            className={`box ${className} ${sizeClassName}`}
+            style={{paddingLeft: 20, ...style}}
+            {...rest}
+        />
+    )
+}
+const element = (
+  <div>
+    <Box
+      size="small"
+      style={{backgroundColor: 'lightblue'}}>
+      small box
+    </Box>
+
+    <Box
+      size="medium"
+      style={{backgroundColor: 'pink'}}>
+      medium box
+    </Box>
+
+    <Box
+      size="large"
+      style={{backgroundColor: 'orange'}}>
+      large box
+    </Box>
+  </div>
+
+)
+
+{/* XXX Popular libaries to look into emotion and glamorous*/}
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+)
+</script>
+</body>
