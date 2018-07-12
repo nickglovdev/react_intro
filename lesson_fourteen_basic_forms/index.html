@@ -1,0 +1,38 @@
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel">
+class NameForm extends React.Component {
+  handleSubmit = event => {
+    event.preventDefault()
+    console.log({target:event.target})
+    // The Two below are regular HTML output
+    console.log(event.target[0].value)
+    // Use this if you have a good amount of inputs
+    console.log(event.target.elements.username.value,)
+    // Like this one more. Comes from the ref in input used in react.
+    console.log(this.inputNode.value)
+  }
+  render() {
+    return(
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input
+          type="text"
+          name="username"
+          ref={node => (this.inputNode = node)} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    )
+  }   
+}
+ReactDOM.render(
+  <NameForm />,
+  document.getElementById('root'),
+)
+</script>
+</body>
